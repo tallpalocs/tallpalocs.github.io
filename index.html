@@ -875,7 +875,7 @@ body {
 <!-- TOOLTIP -->
 <div class="tooltip" id="tooltip"></div>
 
-<!-- ===================== JAVASCRIPT ===================== -->
+<!-- ===================== JAVASCRIPT SECTION ===================== -->
 <script>
 // ========== IMAGES ==========
 (function() {
@@ -961,6 +961,32 @@ document.getElementById('btnClose').addEventListener('click', function() {
   document.getElementById('mainWindow').style.display = 'none';
   document.getElementById('statMain').textContent = 'CS_CLUB_98.EXE has exited. Refresh to restart.';
 });
+
+
+
+// DELETE WINDOW BUT NOT ACTUALLY!!!!!
+
+document.getElementById('btnClose').addEventListener('click', function() {
+  const windowEl = document.querySelector('.window');
+  // Toggle a minimized effect or hide temporarily
+  windowEl.style.display = 'none';
+  
+  // Flash the taskbar item so the user knows where it went
+  const taskbarBtn = document.querySelector('.taskbar-win');
+  if (taskbarBtn) {
+    taskbarBtn.style.fontWeight = 'bold';
+  }
+});
+
+// make clicking the taskbar button restore the window if it's hidden:
+document.querySelector('.taskbar-win')?.addEventListener('click', function() {
+  const windowEl = document.querySelector('.window');
+  if (windowEl.style.display === 'none') {
+    windowEl.style.display = 'flex'; 
+  }
+});
+
+
 
 // ========== CLOCK ==========
 function tick() {
